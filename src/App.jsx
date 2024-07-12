@@ -1,9 +1,11 @@
 import React from 'react'  
+import Navbar from './components/menubar' 
 
-function App() { 
+function App() {  
 
   return (
     <> 
+    <Navbar/>
     </>
   )
 }
