@@ -1,12 +1,23 @@
-import React from 'react'  
-import Navbar from './components/menubar' 
+import React from 'react'   
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
+import RootLayouts from './Rootlayout/RootLayouts'
+import Home from './pages/Home'
+import Task from './pages/Task'
+import Contact from './pages/Contact'
 
 function App() {  
-
+let router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route element={<RootLayouts/>}>
+      <Route path="/" element={<Home/>} />
+      <Route path="/task-view" element={<Task/>} />
+      <Route path="/contact" element={<Contact/>} />
+    </Route>
+  )
+)
   return (
-    <> 
-    <Navbar/>
-    </>
+    <RouterProvider router={router}>  
+    </RouterProvider>
   )
 }
 
