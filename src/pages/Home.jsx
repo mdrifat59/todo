@@ -14,30 +14,43 @@ const Home = () => {
 
   let handleSave = (e)=>{
     e.preventDefault();
-    let addtask ={
-      id: Date.now().toString(32),
-        name,
-       title,
-      description,
-      createdAt: new Date().toString()
-    }
-       dispatch(addTask(addtask))
-       setName("");
-       setTitle("");
-       setDescription("");
-       setCount("");
-       setCheck(false)
+    if(name !== "" && title !== "" && description !== ""){
+      let addtask ={
+        id: Date.now().toString(32),
+          name,
+         title,
+        description,
+        createdAt: new Date().toString()
+      }
+         dispatch(addTask(addtask))
+         setName("");
+         setTitle("");
+         setDescription("");
+         setCount("");
+         setCheck(false);
 
-       toast.success('Add Task', {
-        position: "bottom-left",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light", 
-        });
+          // toastify
+         toast.success('Add Task', {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: false,
+          draggable: true, 
+          theme: "light", 
+          });
+        }else{
+              toast.error('Please Fill All Input Box', {
+              position: "top-center",
+              autoClose: 5000,
+              hideProgressBar: true,
+              closeOnClick: false,
+              pauseOnHover: false,
+              draggable: true, 
+              theme: "light", 
+              });
+              setCheck(false)
+    }
   }
 
   let handleDescription = (e)=>{
