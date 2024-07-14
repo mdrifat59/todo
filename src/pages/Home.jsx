@@ -7,6 +7,7 @@ const Home = () => {
   let [check, setCheck]= useState(false) 
   let [name, setName]= useState("")
   let [title, setTitle]= useState("")
+  let [count, setCount]= useState("")
   let [description, setDescription]= useState("")
   let dispatch = useDispatch()
   let handleSave = (e)=>{
@@ -19,6 +20,10 @@ const Home = () => {
       createdAt: new Date().toString()
     }
        dispatch(addTask(addtask))
+  }
+  let handleDescription = (e)=>{
+      setDescription(e.target.value);
+      setCount(e.target.value.length)
   }
   return (
     <>
@@ -35,8 +40,8 @@ const Home = () => {
             <input className='w-full p-2 rounded-md outline-none mb-2' type="text" placeholder='Title' onChange={(e)=>setTitle(e.target.value)} value={title}/>
             </div>
             <h3 className='flex justify-start text-lg'>Description</h3>
-            <textarea maxLength={400} rows={5} className='w-full p-2 rounded-md outline-none resize-none' type="text" placeholder='Description. . .' onChange={(e)=>setDescription(e.target.value)} value={description}/>
-            <p className='flex justify-end text-gray-300'>100 Cratacter Remaing</p>
+            <textarea maxLength={100} rows={5} className='w-full p-2 rounded-md outline-none resize-none' type="text" placeholder='Description. . .' onChange={handleDescription} value={description}/>
+            <p className='flex justify-end text-gray-300'>{100 - count} Cratacter Remaing</p>
             <label className='flex'>
             <input className='text-2xl' type="checkbox" checked={check} onChange={(e)=>setCheck(e.target.checked)} id="" />
             <p className='ml-2'>i want to add this task</p>
