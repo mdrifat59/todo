@@ -1,12 +1,16 @@
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
+import { useDispatch } from 'react-redux'
+import { addTask } from '../features/taskSlice'
 
 const Home = () => {
   let [check, setCheck]= useState(false) 
   let [name, setName]= useState("")
   let [title, setTitle]= useState("")
   let [description, setDescription]= useState("")
-  let handleSave = ()=>{
+  let dispatch = useDispatch()
+  let handleSave = (e)=>{
+    e.preventDefault();
     let addtask ={
       id: Date.now().toString(32),
         name,
@@ -14,7 +18,7 @@ const Home = () => {
       description,
       createdAt: new Date().toString()
     }
-    console.log(addtask);
+       dispatch(addTask(addtask))
   }
   return (
     <>
