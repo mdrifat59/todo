@@ -4,6 +4,7 @@ import RootLayouts from './Rootlayout/RootLayouts'
 import Home from './pages/Home'
 import Task from './pages/Task'
 import Contact from './pages/Contact'
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {  
 let router = createBrowserRouter(

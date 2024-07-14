@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { useDispatch } from 'react-redux'
 import { addTask } from '../features/taskSlice'
+import { ToastContainer, toast  } from 'react-toastify'
 
 const Home = () => {
   let [check, setCheck]= useState(false) 
@@ -26,6 +27,17 @@ const Home = () => {
        setDescription("");
        setCount("");
        setCheck(false)
+
+       toast.success('Add Task', {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light", 
+        });
   }
 
   let handleDescription = (e)=>{
@@ -45,6 +57,7 @@ const Home = () => {
     <Helmet>
         <title>Home</title>
     </Helmet>
+    <ToastContainer />
     <div className='w-full h-screen flex justify-center items-center'>
         <div className='w-1/4  bg-gray-400 shadow-md rounded-md text-center box-border p-5'> 
             <h1 className='py-4 text-2xl'> Add Your Task</h1>             
