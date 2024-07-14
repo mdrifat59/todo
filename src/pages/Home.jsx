@@ -10,6 +10,7 @@ const Home = () => {
   let [count, setCount]= useState("")
   let [description, setDescription]= useState("")
   let dispatch = useDispatch()
+
   let handleSave = (e)=>{
     e.preventDefault();
     let addtask ={
@@ -20,11 +21,25 @@ const Home = () => {
       createdAt: new Date().toString()
     }
        dispatch(addTask(addtask))
+       setName("");
+       setTitle("");
+       setDescription("");
+       setCount("");
+       setCheck(false)
   }
+
   let handleDescription = (e)=>{
       setDescription(e.target.value);
       setCount(e.target.value.length)
   }
+
+  let handleCencel = ()=>{
+    setName("");
+    setTitle("");
+    setDescription("");
+    setCount("")
+  }
+
   return (
     <>
     <Helmet>
@@ -36,19 +51,23 @@ const Home = () => {
             <h3 className='flex justify-start text-lg'>Name</h3>
             <input className='w-full p-2 rounded-md outline-none  mb-2' type="text" placeholder='Name' onChange={(e)=>setName(e.target.value)} value={name} />
             <div>
+
             <h3 className='flex justify-start text-lg'>Title</h3>
             <input className='w-full p-2 rounded-md outline-none mb-2' type="text" placeholder='Title' onChange={(e)=>setTitle(e.target.value)} value={title}/>
             </div>
+
             <h3 className='flex justify-start text-lg'>Description</h3>
             <textarea maxLength={100} rows={5} className='w-full p-2 rounded-md outline-none resize-none' type="text" placeholder='Description. . .' onChange={handleDescription} value={description}/>
             <p className='flex justify-end text-gray-300'>{100 - count} Cratacter Remaing</p>
+
             <label className='flex'>
             <input className='text-2xl' type="checkbox" checked={check} onChange={(e)=>setCheck(e.target.checked)} id="" />
             <p className='ml-2'>i want to add this task</p>
             </label>
+
             <div className='flex justify-end gap-4 mt-5'> 
               <button className={`border-2 py-1 px-5 rounded-md ${check ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`} disabled={!check} onClick={handleSave}>Save</button>
-              <button className='border-2 py-1 bg-white text-black border-black  px-4 rounded-md'>Cencel</button>
+              <button className='border-2 py-1 bg-white text-black border-black  px-4 rounded-md' onClick={handleCencel}>Cencel</button>
             </div> 
         </div>
     </div> 
