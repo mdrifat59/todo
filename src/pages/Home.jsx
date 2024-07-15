@@ -84,7 +84,7 @@ const Home = () => {
 
             <h3 className='flex justify-start text-lg'>Description</h3>
             <textarea maxLength={100} rows={5} className='w-full p-2 rounded-md outline-none resize-none' type="text" placeholder='Description. . .' onChange={handleDescription} value={description}/>
-            <p className='flex justify-end text-gray-300'>{100 - count} Cratacter Remaing</p>
+            <p className='flex justify-end text-gray-200'>{100 - count} Cratacter Remaing</p>
 
             <label className='flex'>
             <input className='text-2xl' type="checkbox" checked={check} onChange={(e)=>setCheck(e.target.checked)} id="" />
