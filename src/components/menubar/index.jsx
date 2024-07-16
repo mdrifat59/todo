@@ -11,7 +11,7 @@ const Navbar = () => {
   return (
     <>
         <div className='container'>
-            <div className='bg-sky-400 flex justify-between mt-5'> 
+            <div className='bg-sky-400 flex justify-between rounded-md mt-1'> 
                 <div className='flex justify-start p-4'> <h3>Logo</h3></div>
                 <div className='flex gap-4 items-center mr-20'>   
                    <Link to="/" className={linkClass('/')}>Home</Link>

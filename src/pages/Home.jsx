@@ -73,7 +73,7 @@ const Home = () => {
     <ToastContainer />
     <div className='w-full h-screen flex justify-center items-center'>
         <div className='w-1/4  bg-gray-400 shadow-md rounded-md text-center box-border p-5'> 
-            <h1 className='py-4 text-2xl'> Add Your Task</h1>             
+            <h1 className='py-1 text-2xl'> Add Your Task</h1>             
             <h3 className='flex justify-start text-lg'>Name</h3>
             <input className='w-full p-2 rounded-md outline-none  mb-2' type="text" placeholder='Name' onChange={(e)=>setName(e.target.value)} value={name} />
             <div>
