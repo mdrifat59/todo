@@ -10,6 +10,11 @@ const Task = () => {
   let taskView = useSelector((state)=>state.task.tasks)
   let dispatch = useDispatch()
   let [show, setShow]= useState(false)
+  let [editName, setEditName]=useState("")
+  let [editTitle, setEditTitle]=useState("")
+  let [editDescription, setEditDescription]=useState("")
+  let [editId, setEditId]=useState("")
+
   let handleDelete =(id)=>{
       dispatch(deleteTask(id))
       toast.success('Delete a Task Compelete', {
@@ -22,9 +27,13 @@ const Task = () => {
         theme: "light", 
         });
   }
+
   let handleUpdate =(item)=>{
        setShow(true) 
-        
+        setEditName(item.name)
+        setEditTitle(item.title)
+        setEditDescription(item.description)
+        setEditId(item.id)
   } 
   return (
     <>
@@ -57,7 +66,7 @@ const Task = () => {
     :
     
           <>
-           {<Update/>} 
+           {<Update setShow={setShow} editName={editName} editTitle={editTitle} editDescription={editDescription} editId={editId} setEditDescription={setEditDescription} setEditName={setEditName} setEditTitle ={setEditTitle} setEditId ={setEditId} />} 
 
           </>
     }
