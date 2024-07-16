@@ -92,8 +92,8 @@ const Home = () => {
             </label>
 
             <div className='flex justify-end gap-4 mt-5'> 
-              <button className={`border-2 py-1 px-5 rounded-md ${check ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`} disabled={!check} onClick={handleSave}>Save</button>
-              <button className='border-2 py-1 bg-white text-black border-black  px-4 rounded-md' onClick={handleCencel}>Cencel</button>
+              <button className={`border-2 py-1 px-5 font-bold rounded-md ${check ? 'bg-blue-500 text-black' : 'bg-gray-300 text-gray-500 cursor-not-allowed'}`} disabled={!check} onClick={handleSave}>Save</button>
+              <button className='border-2 py-1 bg-white font-bold text-black border-black  px-4 rounded-md' onClick={handleCencel}>Cencel</button>
             </div> 
         </div>
     </div> 

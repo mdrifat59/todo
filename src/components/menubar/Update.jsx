@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux' 
 import { updateTask } from '../../features/taskSlice'
+import { Helmet } from 'react-helmet-async' 
 
 const Update = ({setShow, editName, editTitle, editDescription, editId, setEditName, setEditTitle, setEditDescription}) => {
   let [check, setCheck]= useState(false) 
@@ -12,7 +13,7 @@ const Update = ({setShow, editName, editTitle, editDescription, editId, setEditN
   }
 
 
-  let handleUpdate = ()=>{
+  let handleUpdates = ()=>{
     let updatevalue ={
       id: editId,
       name: editName,
@@ -21,11 +22,14 @@ const Update = ({setShow, editName, editTitle, editDescription, editId, setEditN
       createdAt: new Date().toString()
     }
     dispatch(updateTask(updatevalue))
-    setShow(false)
+    setShow(false) 
   }
-  
+
   return (
     <>
+    <Helmet>
+      <title>UpDate</title>
+    </Helmet> 
         <div className='w-full h-screen flex justify-center items-center'>
         <div className='w-1/4  bg-gray-400 shadow-md rounded-md text-center box-border p-5'> 
             <h1 className='py-4 text-2xl'> Update Your Task</h1>             
@@ -43,7 +47,7 @@ const Update = ({setShow, editName, editTitle, editDescription, editId, setEditN
              
 
             <div className='flex justify-end gap-4 mt-5'> 
-              <button className='border-2 py-1 px-5 rounded-md bg-blue-500 text-white'onClick={handleUpdate} >Update</button>
+              <button className='border-2 py-1 px-5 rounded-md bg-blue-500 text-white'onClick={handleUpdates} >Update</button>
               <button className='border-2 py-1 bg-white text-black border-black  px-4 rounded-md' onClick={()=>setShow(false)} >Cencel</button>
             </div> 
         </div>

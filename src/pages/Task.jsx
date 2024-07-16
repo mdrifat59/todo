@@ -34,7 +34,7 @@ const Task = () => {
 
   let handleMoreTask= ()=>{   
       setVisiable((prev)=>prev + 4)    
-  } 
+  }  
   return (
     <>
       <Helmet>
@@ -75,7 +75,7 @@ const Task = () => {
         :
 
         <>
-          {<Update setShow={setShow} editName={editName} editTitle={editTitle} editDescription={editDescription} editId={editId} setEditDescription={setEditDescription} setEditName={setEditName} setEditTitle={setEditTitle} />}
+          {<Update setShow={setShow} editName={editName} editTitle={editTitle} editDescription={editDescription} editId={editId} setEditDescription={setEditDescription} setEditName={setEditName} setEditTitle={setEditTitle}   />}
 
         </>
       }
