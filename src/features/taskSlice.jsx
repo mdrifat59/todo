@@ -34,6 +34,6 @@ if(savetask){
     }
  })
 
- export const { addTask, deleteTask } = taskSlice.actions;
+ export const { addTask, deleteTask, updateTask } = taskSlice.actions;
  
  export default taskSlice.reducer;

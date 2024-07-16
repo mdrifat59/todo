@@ -1,11 +1,29 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux' 
+import { updateTask } from '../../features/taskSlice'
 
-const Update = ({setShow, editName, editTitle, editDescription, editId, setEditName, setEditTitle, setEditDescription, setEditId}) => {
+const Update = ({setShow, editName, editTitle, editDescription, editId, setEditName, setEditTitle, setEditDescription}) => {
   let [check, setCheck]= useState(false) 
+  let dispatch = useDispatch()
+
   let handleDescription =(e)=>{
     setEditDescription(e.target.value)
         setCheck(e.target.value.length)
   }
+
+
+  let handleUpdate = ()=>{
+    let updatevalue ={
+      id: editId,
+      name: editName,
+      title: editTitle,
+      description: editDescription,
+      createdAt: new Date().toString()
+    }
+    dispatch(updateTask(updatevalue))
+    setShow(false)
+  }
+  
   return (
     <>
         <div className='w-full h-screen flex justify-center items-center'>
@@ -25,7 +43,7 @@ const Update = ({setShow, editName, editTitle, editDescription, editId, setEditN
              
 
             <div className='flex justify-end gap-4 mt-5'> 
-              <button className='border-2 py-1 px-5 rounded-md bg-blue-500 text-white'>Save</button>
+              <button className='border-2 py-1 px-5 rounded-md bg-blue-500 text-white'onClick={handleUpdate} >Update</button>
               <button className='border-2 py-1 bg-white text-black border-black  px-4 rounded-md' onClick={()=>setShow(false)} >Cencel</button>
             </div> 
         </div>
