@@ -14,6 +14,7 @@ const Task = () => {
   let [editTitle, setEditTitle] = useState("")
   let [editDescription, setEditDescription] = useState("")
   let [editId, setEditId] = useState("")
+  let[visible, setVisiable]= useState(8)
 
   let handleDelete = (id) => {
     dispatch(deleteTask(id))
@@ -36,6 +37,10 @@ const Task = () => {
     setEditId(item.id)
   }
 
+  let handleMoreTask= ()=>{   
+      setVisiable((prev)=>prev + 4)    
+  }
+
   return (
     <>
       <Helmet>
@@ -44,10 +49,10 @@ const Task = () => {
       <ToastContainer />
       {!show ?
 
-        <div className='container'>
+        <div className='container pb-5'>
           <h1 className='text-center text-4xl my-2'>All Task</h1>
           <div className='grid grid-cols-4 gap-3 mt-5'>
-            {taskView.map(item => (
+            {taskView.slice(0,visible).map(item => (
               <div className='border border-black  rounded-md shadow-xl p-3'>
                 <h2><span className='font-bold'>Name:</span> {item.name}</h2>
                 <h3><span className='font-bold'>Title:</span> {item.title}</h3>
@@ -60,6 +65,13 @@ const Task = () => {
               </div>
             ))}
           </div>
+          {
+            visible < taskView.length && (
+            <div className='text-center'>
+              <button className='bg-green-500 text-white py-1 px-2 rounded-md mt-5' onClick={handleMoreTask}>More Task</button>
+          </div>
+            )
+          }
         </div>
 
         :
